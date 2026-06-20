@@ -1,65 +1,196 @@
 # audit-business-reality
 
-Stop choosing business ideas by instinct. Audit opportunities with numbers: personal targets, cashflow, time-to-profit, copy risk, and durable assets.
+一个用于 Codex 的商业现实审计 Skill。
 
-## What It Does
+它解决的问题很直接：**不要靠拍脑袋选择新业务，而是把个人目标、现金流、交付负担、跑通时间、复制风险和长期资产全部量化，再做决策。**
 
-`audit-business-reality` is a Codex skill for sober business opportunity evaluation.
+## 适合什么时候用
 
-It is designed for moments like:
+当你遇到这些问题时，可以调用这个 Skill：
 
-- choosing between business option A and B
-- evaluating a new one-person-business idea
-- checking whether a creator product, AI tool, course, service, or private-domain funnel can actually make money
-- separating business revenue from personal cashflow
-- translating life goals into priced financial milestones
-- judging whether a project creates durable assets or only short-term labor income
+- 想做新业务，但不知道该选 A 还是 B
+- 被别人晒收入、GMV、日入/月入截图影响，开始焦虑
+- 想判断一个 AI 工具、课程、服务、私域项目、小红书产品是否值得做
+- 想知道一个项目是短期现金流，还是长期资产
+- 想把个人生活目标翻译成明确的财务目标
+- 想分清楚公司账、个人账、现金流、净资产
+- 想判断别人多久能抄你，以及该提前沉淀什么护城河
+- 想用 `P0 主攻 / P1 轻测 / P2 观察 / P3 放弃` 给机会分级
 
-## Core Principle
+## 核心思想
 
-Do not choose by instinct. Quantify the decision.
+这个 Skill 的底层逻辑是：
 
-The skill forces a project through:
+```text
+不跟别人比，先搞清楚自己真正需要多少钱。
+不被表面数据影响，先还原真实账。
+不靠感觉选项目，要用数字、进度条和风险边界做判断。
+```
 
-- personal financial target: what life actually costs, low-config and high-config
-- public/private ledger separation: business cash is not personal wealth
-- real ledger: revenue, margin, tax, refund, tooling, delivery, and cash cycle
-- demand evidence: paid orders beat likes, saves, and praise
-- time lag: `T_money`, `T_repeat`, `T_profit`, `T_ownerless`, `T_copy`
-- competition readiness: what competitors can copy, and what they cannot
-- downside control: stop conditions, cash runway, and fallback paths
-- priority grading: `P0 主攻`, `P1 轻测`, `P2 观察`, `P3 放弃`
+如果自己的个人目标算不清、公账和私账分不清，就是不知己。
 
-## Why It Exists
+如果别人真实情况搞不清，被社交媒体展示数据影响，把别人的财务目标当成自己的目标，就是不知彼。
 
-Many business decisions are made by anxiety, envy, social-media revenue screenshots, or a single exciting story.
+不做到知己知彼，就是在打一场连续的、几乎注定会失败的战斗。
 
-This skill starts from a harder premise:
+## 安装方法
 
-- If your personal goals are unclear, you do not know yourself.
-- If business and personal accounts are mixed, you do not know your real position.
-- If you copy other people's financial targets from social media, you do not know the other side.
-- If you do not know yourself or the other side, you are fighting a long battle with bad maps.
-
-The practical output is a quantified route: how much to earn, spend, save, invest, and retain each year, and whether a business path can support that route without heroic assumptions.
-
-## Install
-
-Clone or copy this repository into your Codex skills directory:
+把这个仓库克隆到 Codex 的 skills 目录：
 
 ```bash
 mkdir -p ~/.codex/skills
 git clone https://github.com/leechunfang64-cyber/audit-business-reality.git ~/.codex/skills/audit-business-reality
 ```
 
-Then invoke it in Codex:
+如果你已经安装过，想更新到最新版：
 
-```text
-Use $audit-business-reality to compare these two business options.
+```bash
+cd ~/.codex/skills/audit-business-reality
+git pull
 ```
 
-## Files
+安装后，重新打开 Codex，或者开启一个新对话，让 Codex 重新加载 Skill 列表。
 
-- `SKILL.md`: skill trigger, stance, workflow, and output contract
-- `references/audit-framework.md`: detailed scorecard, ledger templates, time-lag test, and output skeleton
-- `agents/openai.yaml`: UI metadata for Codex
+## 如何调用
+
+在 Codex 里直接说：
+
+```text
+用 $audit-business-reality 帮我审一下这个项目。
+```
+
+或者：
+
+```text
+用 $audit-business-reality 帮我比较 A 和 B 哪个更值得做。
+```
+
+也可以这样问：
+
+```text
+用 $audit-business-reality 判断这个小红书虚拟产品是 P0、P1、P2 还是 P3。
+```
+
+## 最好提供什么信息
+
+你给的信息越具体，审计越接近真实。
+
+至少可以提供：
+
+```text
+1. 项目是什么？
+2. 目标用户是谁？
+3. 他们为什么会付钱？
+4. 预计卖多少钱？
+5. 获客渠道是什么？
+6. 一单需要你交付多久？
+7. 现在有没有真实付款、咨询、评论、搜索需求或同行案例？
+8. 你现在的现金流和时间资源能撑多久？
+```
+
+如果是比较 A/B 两个方向，建议这样提供：
+
+```text
+A 方向：
+- 产品：
+- 客户：
+- 价格：
+- 获客：
+- 交付：
+- 证据：
+
+B 方向：
+- 产品：
+- 客户：
+- 价格：
+- 获客：
+- 交付：
+- 证据：
+
+我的约束：
+- 每周可投入时间：
+- 当前现金流：
+- 最多可亏预算：
+- 目标一年赚到多少：
+```
+
+如果你想算个人目标，可以补充：
+
+```text
+低配生活：
+- 城市/住房：
+- 每月生活费：
+- 家庭支持：
+- 子女/教育：
+- 健康/运动：
+- 旅游/体验：
+
+高配生活：
+- 城市/住房：
+- 每月生活费：
+- 家庭支持：
+- 子女/教育：
+- 健康/运动：
+- 旅游/体验：
+
+当前状态：
+- 个人现金：
+- 可投资资产：
+- 负债：
+- 每月固定支出：
+- 当前业务月净现金流：
+```
+
+## 它会输出什么
+
+通常会输出这些内容：
+
+- 结论：`P0 主攻 / P1 轻测 / P2 观察 / P3 放弃`
+- 这个项目成立必须满足什么条件
+- 个人目标账：低配/高配生活到底需要多少钱
+- 年度进度条：每年要赚、花、存、投多少
+- 公私账分离：公司钱、个人钱、可投资钱是否混在一起
+- 真实账：收入、成本、利润、现金流、交付时间
+- 时间差：`T_money / T_repeat / T_profit / T_ownerless / T_copy`
+- 竞争风险：别人多久能抄你，抄不走的资产是什么
+- 止损线：做到什么程度还没结果就该停
+- 下一步：3-5 个具体动作
+
+## 一个调用示例
+
+```text
+用 $audit-business-reality 帮我比较两个方向：
+
+A：做小红书资料包，售价 79 元，靠笔记获客，交付是 PDF + 模板。
+B：做一个 AI 自动化小工具，售价 199 元，靠私域和内容获客，需要我写代码和维护。
+
+我的目标是一年内做到每月稳定净现金流 3 万，每周最多投入 35 小时，不想长期做重交付。
+请帮我判断哪个更值得轻测，哪个应该放弃，以及每个方向的 T_money、T_copy 和止损线。
+```
+
+## 文件结构
+
+```text
+audit-business-reality/
+├── SKILL.md
+├── agents/
+│   └── openai.yaml
+├── references/
+│   └── audit-framework.md
+├── README.md
+└── LICENSE
+```
+
+文件说明：
+
+- `SKILL.md`：Skill 的触发说明、核心立场、工作流和输出格式
+- `references/audit-framework.md`：完整审计框架、打分表、时间差测试、账务模板
+- `agents/openai.yaml`：Codex 使用的界面元数据
+- `README.md`：安装和使用说明
+- `LICENSE`：开源协议
+
+## 不是财务或投资建议
+
+这个 Skill 适合做商业判断、项目筛选和经营推演，不构成财务、税务、法律或投资建议。
+
+真正要做大额投资、税务规划、法律合规时，需要找对应专业人士。
