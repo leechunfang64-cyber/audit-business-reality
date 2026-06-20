@@ -1,0 +1,4 @@
+interface:
+  display_name: "Business Reality Audit"
+  short_description: "Audit cashflow, risk, moat, and execution reality."
+  default_prompt: "Use $audit-business-reality to compare these business options with quantified personal targets, cashflow, delivery burden, copy risk, and durable assets."
